@@ -1,0 +1,61 @@
+\chapter{Full Stack Development} % Main chapter title
+
+
+\section*{2.1 \hspace{1cm} Lo Stack}
+\subsection*{2.1.1 \hspace{1cm} Docker}
+Docker è un insieme di prodotti PaaS (Platform as a Service) che utilizzano la virtualizzazione a livello di sistema operativo per fornire software in pacchetti chiamati contenitori. I contenitori sono isolati l'uno dall'altro e raggruppano i propri software, librerie e file di configurazione; possono comunicare tra loro attraverso canali ben definiti. Poiché tutti i contenitori condividono i servizi di un singolo kernel del sistema operativo, utilizzano meno risorse rispetto alle macchine virtuali. \\
+
+Il servizio ha livelli sia gratuito che premium. Il software che ospita i contenitori si chiama Docker Engine. È stato avviato per la prima volta nel 2013 ed è sviluppato da Docker, Inc.
+
+\subsection*{2.1.2 \hspace{1cm} Flask su PyPy3}
+Flask è un micro framework web scritto in Python. È classificato come microframework perché non richiede strumenti o librerie particolari. Non ha un livello di astrazione del database, convalida di moduli o altri componenti in cui le librerie di terze parti preesistenti forniscono funzioni comuni. Tuttavia, Flask supporta estensioni che possono aggiungere funzionalità dell'applicazione come se fossero implementate in Flask stesso. Esistono estensioni per mappatori relazionali a oggetti, convalida di moduli, gestione del caricamento, varie tecnologie di autenticazione aperta e diversi strumenti comuni relativi al framework. \\
+
+Le applicazioni che utilizzano il framework Flask includono Pinterest e LinkedIn. \\
+
+Flask è composto da diversi componenti, fra cui: 
+\begin{itemize}
+    \item \textbf{Werkzeug}: Werkzeug (termine tedesco per "strumento") è una libreria per il linguaggio di programmazione Python, in altre parole un toolkit per applicazioni WSGI (Web Server Gateway Interface), ed è concesso in licenza con licenza BSD. Werkzeug può realizzare oggetti software per funzioni di richiesta, risposta e utilità. Può essere utilizzato per creare un framework software personalizzato su di esso e supporta Python 2.7 e 3.5 e versioni successive;
+    \item \textbf{Jinja}: Jinja è un motore di modelli per il linguaggio di programmazione Python ed è concesso in licenza con licenza BSD. Simile al framework web Django, gestisce i modelli in una sandbox;
+    \item \textbf{MarkupSafe}: MarkupSafe è una libreria per la gestione delle stringhe per il linguaggio di programmazione Python, con licenza BSD. L'omonimo tipo MarkupSafe estende il tipo di stringa Python e contrassegna il suo contenuto come "sicuro"; la combinazione di MarkupSafe con stringhe regolari fa automaticamente l'escape delle stringhe non contrassegnate, evitando il doppio escape delle stringhe già contrassegnate;
+    \item \textbf{ItsDangerous}: ItsDangerous è una libreria di serializzazione dei dati sicura per il linguaggio di programmazione Python, con licenza BSD. Viene utilizzato per memorizzare la sessione di un'applicazione Flask in un cookie senza consentire agli utenti di manomettere il contenuto della sessione.
+\end{itemize}
+
+
+\subsection*{2.1.3 \hspace{1cm} SQLAlchemy}
+SQLAlchemy è un toolkit SQL open source e ORM (object-relational mapper) per il linguaggio di programmazione Python rilasciato sotto la licenza MIT. \\
+
+La filosofia di SQLAlchemy è che i database relazionali si comportano meno come le raccolte di oggetti man mano che la scala diventa più grande e le prestazioni iniziano a essere un problema, mentre le raccolte di oggetti si comportano meno come tabelle e righe poiché viene progettata una maggiore astrazione. Per questo motivo ha adottato il modello di mappatura dati (simile a Hibernate per Java) piuttosto che il modello di registrazione attivo utilizzato da una serie di altri mappatori relazionali di oggetti. Tuttavia, i plugin opzionali consentono agli utenti di sviluppare utilizzando la sintassi dichiarativa. \\
+
+SQLAlchemy è stato rilasciato per la prima volta nel febbraio 2006 ed è diventato rapidamente uno degli strumenti di mappatura relazionale a oggetti più utilizzati nella comunità Python, insieme a ORM di Django.
+
+
+\subsection*{2.1.4 \hspace{1cm} PostgreSQL}
+PostgreSQL, noto anche come Postgres, è un sistema di gestione del database relazionale (RDBMS) gratuito e open source che enfatizza l'estensibilità e la conformità SQL. Originariamente era chiamato POSTGRES, in riferimento alle sue origini come successore del database Ingres sviluppato presso l'Università della California, Berkeley. Nel 1996, il progetto è stato rinominato PostgreSQL per riflettere il suo supporto per SQL. Dopo una revisione nel 2007, il team di sviluppo ha deciso di mantenere il nome PostgreSQL e l'alias Postgres. \\
+
+PostgreSQL offre transazioni con proprietà Atomicity, Consistency, Isolation, Durability (ACID), viste aggiornabili automaticamente, viste materializzate, trigger, chiavi esterne e stored procedure. È progettato per gestire una vasta gamma di carichi di lavoro, da singole macchine a data warehouse o servizi Web con molti utenti simultanei. È il database predefinito per macOS Server ed è disponibile anche per Windows, Linux, FreeBSD e OpenBSD. 
+
+\subsection*{2.1.5 \hspace{1cm} React}
+React (noto anche come React.js o ReactJS) è una libreria JavaScript front-end open source per la creazione di interfacce utente o componenti dell'interfaccia utente. È gestito da Facebook e da una comunità di singoli sviluppatori e aziende. React può essere utilizzato come base per lo sviluppo di applicazioni a pagina singola o mobili. Tuttavia, React si occupa solo della gestione dello stato e del rendering di tale stato nel DOM, quindi la creazione di applicazioni React di solito richiede l'uso di librerie aggiuntive per il routing, oltre a determinate funzionalità lato client. \\
+
+\section*{2.2 \hspace{1cm} Il Sito}
+\subsection*{2.2.1 \hspace{1cm} Il server API}
+Questo è una parte del codice per il server API. \\
+\lstinputlisting[language=python]{../../../project/api/code/routes.py}
+
+Poiché abbiamo un server API (e un cluster di server), manterremo le informazioni in un token web. I token Web JSON (\ href {https://jwt.io/} {JWT}) verranno utilizzati per archiviare i dati della sessione lato client in modo sicuro. \\
+Questo è il middleware per l'utilizzo di JWT. \\
+
+\lstinputlisting[language=python]{../../../project/api/code/middleware.py}
+
+
+\subsection*{2.2.2 \hspace{1cm} Il Frontend}
+Entrambi i frontend di admin.electrocorp.com e (www.)electrocorp.com sono sviluppati con React.
+Userò diverse librerie, fra cui:
+\begin{itemize}
+    \item \href{https://tailwindcss.com/}{Tailwind.css}: un framework web (tipo Bootstrap), che mi solleva dal dover scrivere un sacco di CSS e utilizzare Tailwind direttamente nella mia pagina HTML;
+    \item \href{https://reactrouter.com/}{React Router}: una libreria di React.js per renderizzare più pagine nello stesso codice;
+    \item \href{https://globe.gl}{Globe.gl}: una libreria di React.js per renderizzare un globo.
+\end{itemize}
+
+Questo è il codice di App.js:
+\lstinputlisting{../../../project/admin/code/src/App.js}

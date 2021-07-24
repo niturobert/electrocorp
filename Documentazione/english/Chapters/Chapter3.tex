@@ -1,0 +1,68 @@
+\chapter{Full Stack Development} % Main chapter title
+
+
+\section*{2.1 \hspace{1cm} The Stack}
+\subsection*{2.1.1 \hspace{1cm} Docker}
+Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels. Because all of the containers share the services of a single operating system kernel, they use fewer resources than virtual machines. \\
+
+The service has both free and premium tiers. The software that hosts the containers is called Docker Engine. It was first started in 2013 and is developed by Docker, Inc.
+
+
+\subsection*{2.1.2 \hspace{1cm} Flask on PyPy3}
+Flask is a micro web framework written in Python. It is classified as a microframework because it does not require particular tools or libraries. It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions. However, Flask supports extensions that can add application features as if they were implemented in Flask itself. Extensions exist for object-relational mappers, form validation, upload handling, various open authentication technologies and several common framework related tools. \\
+
+Applications that use the Flask framework include Pinterest and LinkedIn. \\
+
+Flask has several components, including:
+\begin{itemize}
+    \item \textbf{Werkzeug}: Werkzeug (German for "tool") is a utility library for the Python programming language, in other words a toolkit for Web Server Gateway Interface (WSGI) applications, and is licensed under a BSD License. Werkzeug can realize software objects for request, response, and utility functions. It can be used to build a custom software framework on top of it and supports Python 2.7 and 3.5 and later;
+    
+    \item \textbf{Jinja}: Jinja is a template engine for the Python programming language and is licensed under a BSD License. Similar to the Django web framework, it handles templates in a sandbox;
+    
+    \item \textbf{MarkupSafe}: MarkupSafe is a string handling library for the Python programming language, licensed under a BSD license. The eponymous MarkupSafe type extends the Python string type and marks its contents as "safe"; combining MarkupSafe with regular strings automatically escapes the unmarked strings, while avoiding double escaping of already marked strings;
+    
+    \item \textbf{ItsDangerous}: ItsDangerous is a safe data serialization library for the Python programming language, licensed under a BSD license. It is used to store the session of a Flask application in a cookie without allowing users to tamper with the session contents.
+
+\end{itemize}
+
+
+\subsection*{2.1.3 \hspace{1cm} SQLAlchemy}
+SQLAlchemy is an open-source SQL toolkit and object-relational mapper (ORM) for the Python programming language released under the MIT License. \\
+
+SQLAlchemy's philosophy is that relational databases behave less like object collections as the scale gets larger and performance starts being a concern, while object collections behave less like tables and rows as more abstraction is designed into them. For this reason it has adopted the data mapper pattern (similar to Hibernate for Java) rather than the active record pattern used by a number of other object-relational mappers. However, optional plugins allow users to develop using declarative syntax. \\
+
+SQLAlchemy was first released in February 2006 and has quickly become one of the most widely used object-relational mapping tools in the Python community, alongside Django's ORM.
+
+
+
+\subsection*{2.1.4 \hspace{1cm} PostgreSQL}
+PostgreSQL, also known as Postgres, is a free and open-source relational database management system (RDBMS) emphasizing extensibility and SQL compliance. It was originally named POSTGRES, referring to its origins as a successor to the Ingres database developed at the University of California, Berkeley. In 1996, the project was renamed to PostgreSQL to reflect its support for SQL. After a review in 2007, the development team decided to keep the name PostgreSQL and the alias Postgres. \\
+
+PostgreSQL features transactions with Atomicity, Consistency, Isolation, Durability (ACID) properties, automatically updatable views, materialized views, triggers, foreign keys, and stored procedures. It is designed to handle a range of workloads, from single machines to data warehouses or Web services with many concurrent users. It is the default database for macOS Server and is also available for Windows, Linux, FreeBSD, and OpenBSD.
+
+
+\subsection*{2.1.5 \hspace{1cm} React}
+React (also known as React.js or ReactJS) is an open-source front-end JavaScript library for building user interfaces or UI components. It is maintained by Facebook and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications. However, React is only concerned with state management and rendering that state to the DOM, so creating React applications usually requires the use of additional libraries for routing, as well as certain client-side functionality. \\
+
+\section*{2.2 \hspace{1cm} The Website}
+\subsection*{2.2.1 \hspace{1cm} The API server}
+This is the code for the API server.
+\lstinputlisting[language=python]{../../../project/api/code/routes.py}
+
+Since we have an API server (and a cluster of servers) we will keep the information in a web token. JSON Web Tokens (\href{https://jwt.io/}{JWT}) will be used for storing session data client-side in a secure manner. \\
+This is the middleware for using JWT. \\
+
+\lstinputlisting[language=python]{../../../project/api/code/middleware.py}
+
+
+\subsection*{2.2.2 \hspace{1cm} The Frontend}
+The frontend of both admin.electrocorp.com and (www.)electrocorp.com are built on React.
+I will use several libraries, such as:
+\begin{itemize}
+    \item \href{https://tailwindcss.com/}{Tailwind.css}: a web framework, which relieves me from having to write loads of CSS, and use Tailwind directly in my HTML page;
+    \item \href{https://reactrouter.com/}{React Router}: a React.js library to render multiple pages in the same code;
+    \item \href{https://globe.gl}{Globe.gl}: a React.js library to render a globe.
+\end{itemize}
+
+This is the App.js page:
+\lstinputlisting{../../../project/admin/code/src/App.js}
